@@ -1,6 +1,14 @@
 package com.example.swift_rest_api.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
+
+import java.util.List;
+
+@Entity
 public class SwiftCode {
+    @Id
     private String swiftCode;
     private String bankName;
     private String address;
@@ -8,6 +16,25 @@ public class SwiftCode {
     private String countryName;
     private boolean isHeadquarter;
 
+    @Transient
+    private List<SwiftCode> branches;
+
+    public SwiftCode() {
+    }
+
+    public SwiftCode(String swiftCode, String bankName, String address, String countryISO2, String countryName, boolean isHeadquarter) {
+        this.swiftCode = swiftCode;
+        this.bankName = bankName;
+        this.address = address;
+        this.countryISO2 = countryISO2;
+        this.countryName = countryName;
+        this.isHeadquarter = isHeadquarter;
+    }
+
+    public SwiftCode(String swiftCode, String bankName, String address, String countryISO2, String countryName, boolean isHeadquarter, List<SwiftCode> branches) {
+        this(swiftCode, bankName, address, countryISO2, countryName, isHeadquarter);
+        this.branches = branches;
+    }
     public String getSwiftCode() {
         return swiftCode;
     }
@@ -56,6 +83,13 @@ public class SwiftCode {
         isHeadquarter = headquarter;
     }
 
+    public List<SwiftCode> getBranches() {
+        return branches;
+    }
+
+    public void setBranches(List<SwiftCode> branches) {
+        this.branches = branches;
+    }
     @Override
     public String toString() {
         return "SwiftCode{" +
