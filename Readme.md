@@ -35,7 +35,7 @@ docker-compose up --build
 This will:
 - Build the application
 - Start the MySQL database
-- Run the Spring Boot application on **http://localhost:8080**
+- Run the Spring Boot application on **http://localhost:8080 + endpoint **
 
 ### 3️⃣ Run Manually (Without Docker)
 #### Start MySQL Database
